@@ -10,14 +10,22 @@ interface SlideProps {
 }
 
 const Slide: React.FC<SlideProps> = ({ image, active, index }) => {
+  const titles = [
+    "Rural Development",
+    "Empowering Communities"
+  ];
+  
   return (
     <div 
       className={`hero-slide ${active ? 'active' : ''}`} 
       style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}
       aria-hidden={!active}
       role="img"
-      aria-label={`Banner slide ${index + 1}`}
+      aria-label={`Banner slide ${index + 1}: ${titles[index]}`}
     >
+      <div className="slide-caption">
+        <h2>{titles[index]}</h2>
+      </div>
     </div>
   );
 };

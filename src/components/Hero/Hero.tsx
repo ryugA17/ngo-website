@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import HeroSlider from './HeroSlider';
-import HeroContent from './HeroContent';
+import HeroStats from './HeroStats';
 import './Hero.css';
 
 const Hero = () => {
@@ -14,7 +14,11 @@ const Hero = () => {
       const scrollTop = window.scrollY;
       const parallaxOffset = scrollTop * 0.4;
       
-      heroRef.current.style.transform = `translateY(${parallaxOffset}px)`;
+      // Apply parallax only to slider container
+      const sliderContainer = heroRef.current.querySelector('.hero-slider-container');
+      if (sliderContainer) {
+        (sliderContainer as HTMLElement).style.transform = `translateY(${parallaxOffset}px)`;
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -25,9 +29,11 @@ const Hero = () => {
 
   return (
     <section className="hero" ref={heroRef}>
-      <HeroSlider autoSlideInterval={6000} />
-      <div className="hero-content-wrapper">
-        <HeroContent />
+      <div className="hero-slider-container">
+        <HeroSlider autoSlideInterval={6000} />
+      </div>
+      <div className="hero-additional-content">
+        <HeroStats />
       </div>
     </section>
   );
