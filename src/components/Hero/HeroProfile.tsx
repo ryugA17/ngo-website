@@ -36,7 +36,7 @@ const HeroProfile = () => {
         <div className="profile-content">
           <div className="profile-text">
             <div className="profile-content-wrapper">
-              <div className="profile-label">ABOUT US</div>
+              <div className="profile-label">Profile</div>
               <h2>Indian Institute For Rural Development (IIRD)</h2>
               
               <p className="description">

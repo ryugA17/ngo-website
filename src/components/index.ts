@@ -12,4 +12,9 @@ export { default as HeroProfile } from './Hero/HeroProfile';
 // Vision Mission Components
 export { default as VisionMissionSection } from './VisionMission/VisionMissionSection';
 export { default as VisionMissionCard } from './VisionMission/VisionMissionCard';
-export { VisionIcon, MissionIcon, ObjectivesIcon } from './VisionMission/VisionMissionIcons'; 
+export { VisionIcon, MissionIcon, ObjectivesIcon } from './VisionMission/VisionMissionIcons';
+
+// Project Components
+export { default as ProjectSlider } from './Projects/ProjectSlider';
+export { default as ProjectCard } from './Projects/ProjectCard';
+export { projectsData } from './Projects/ProjectsData'; 
