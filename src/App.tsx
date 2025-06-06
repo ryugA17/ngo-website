@@ -13,11 +13,13 @@ function App() {
           <Navbar />
         </header>
         <main>
-          <div className="section-container">
-            <Hero />
-          </div>
-          <div className="section-container">
-            <VisionMissionSection />
+          <div className="section-wrapper">
+            <section className="sticky-section">
+              <Hero />
+            </section>
+            <section className="next-section">
+              <VisionMissionSection />
+            </section>
           </div>
           <div className="section-container">
             <ProjectSlider />

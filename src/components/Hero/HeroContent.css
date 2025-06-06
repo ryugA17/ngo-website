@@ -1,5 +1,5 @@
 .hero-content {
-  position: relative;
+  position: fixed;
   z-index: 10;
   max-width: 900px;
   padding: 0 2rem;

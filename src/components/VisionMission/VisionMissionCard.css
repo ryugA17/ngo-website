@@ -1,5 +1,5 @@
 .vision-mission-card {
-  position: relative;
+  position: sticky;
   background-color: rgba(30, 30, 30, 0.9);
   border-radius: 8px;
   padding: 2.5rem 2rem;

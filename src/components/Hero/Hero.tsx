@@ -4,20 +4,26 @@ import HeroProfile from './HeroProfile';
 import './Hero.css';
 
 const Hero = () => {
-  const heroRef = useRef<HTMLElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-  // Add parallax scrolling effect with reduced intensity
+  // Add scroll effect for sticky transition
   useEffect(() => {
     const handleScroll = () => {
-      if (!heroRef.current) return;
+      if (!heroRef.current || !sliderRef.current) return;
       
       const scrollTop = window.scrollY;
-      const parallaxOffset = scrollTop * 0.2; // Reduced from 0.4 to 0.2 for subtler effect
+      const heroHeight = window.innerHeight;
       
-      // Apply parallax only to slider container
-      const sliderContainer = heroRef.current.querySelector('.hero-slider-container');
-      if (sliderContainer) {
-        (sliderContainer as HTMLElement).style.transform = `translateY(${parallaxOffset}px)`;
+      // Parallax effect for slider
+      sliderRef.current.style.transform = `translateY(${scrollTop * 0.2}px)`;
+      
+      // Fade out hero section as we scroll down
+      if (scrollTop > heroHeight * 0.3) {
+        const opacity = 1 - ((scrollTop - heroHeight * 0.3) / (heroHeight * 0.5));
+        heroRef.current.style.opacity = Math.max(opacity, 0).toString();
+      } else {
+        heroRef.current.style.opacity = '1';
       }
     };
 
@@ -28,12 +34,12 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="hero-section" ref={heroRef}>
-      <div className="hero-slider-container">
+    <div className="hero-section" ref={heroRef}>
+      <div className="hero-slider-container" ref={sliderRef}>
         <HeroSlider autoSlideInterval={6000} />
       </div>
       <HeroProfile />
-    </section>
+    </div>
   );
 };
 
