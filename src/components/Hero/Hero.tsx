@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="hero-content">
         <h1>Empowering Rural Communities</h1>
         <p>Working together for sustainable development and positive change</p>
-        <button className="cta-button">Learn More</button>
+        <button className="cta-button">LEARN MORE</button>
       </div>
     </section>
   );

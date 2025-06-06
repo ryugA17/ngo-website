@@ -7,7 +7,9 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navbar />
+        <header>
+          <Navbar />
+        </header>
         <main>
           <Hero />
           {/* Other sections will be added here */}
