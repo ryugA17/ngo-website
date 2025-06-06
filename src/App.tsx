@@ -12,8 +12,12 @@ function App() {
           <Navbar />
         </header>
         <main>
-          <Hero />
-          <VisionMissionSection />
+          <div className="section-container">
+            <Hero />
+          </div>
+          <div className="section-container">
+            <VisionMissionSection />
+          </div>
           {/* Other sections will be added here */}
         </main>
       </div>

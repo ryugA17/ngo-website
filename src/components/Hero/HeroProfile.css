@@ -1,11 +1,13 @@
 .hero-profile {
-  padding: 4rem 0;
+  padding: 4rem 0 8rem;
   background-color: #121212;
   color: #fff;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-profile.visible {

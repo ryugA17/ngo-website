@@ -6,13 +6,13 @@ import './Hero.css';
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
 
-  // Add parallax scrolling effect
+  // Add parallax scrolling effect with reduced intensity
   useEffect(() => {
     const handleScroll = () => {
       if (!heroRef.current) return;
       
       const scrollTop = window.scrollY;
-      const parallaxOffset = scrollTop * 0.4;
+      const parallaxOffset = scrollTop * 0.2; // Reduced from 0.4 to 0.2 for subtler effect
       
       // Apply parallax only to slider container
       const sliderContainer = heroRef.current.querySelector('.hero-slider-container');
