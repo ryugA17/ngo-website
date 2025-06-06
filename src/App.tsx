@@ -3,6 +3,8 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import VisionMissionSection from './components/VisionMission/VisionMissionSection';
 import ProjectSlider from './components/Projects/ProjectSlider';
+import WorkSection from './components/Work/WorkSection';
+import PartnersSection from './components/Partners/PartnersSection';
 import './App.css';
 
 function App() {
@@ -22,7 +24,13 @@ function App() {
             </section>
           </div>
           <div className="section-container">
+            <WorkSection />
+          </div>
+          <div className="section-container">
             <ProjectSlider />
+          </div>
+          <div className="section-container">
+            <PartnersSection />
           </div>
           {/* Other sections will be added here */}
         </main>

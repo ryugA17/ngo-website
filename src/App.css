@@ -67,8 +67,11 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - var(--navbar-height)); /* Full viewport height minus navbar */
   z-index: 1;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Next section (VisionMission) */

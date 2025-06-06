@@ -13,7 +13,9 @@ const Slide: React.FC<SlideProps> = ({ image, active, index }) => {
   return (
     <div 
       className={`hero-slide ${active ? 'active' : ''}`} 
-      style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})` }}
+      style={{ 
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`,
+      }}
       aria-hidden={!active}
       role="img"
       aria-label={`Banner slide ${index + 1}`}

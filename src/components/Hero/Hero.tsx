@@ -5,22 +5,18 @@ import './Hero.css';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
 
-  // Add scroll effect for sticky transition
+  // Add fade effect for sticky transition
   useEffect(() => {
     const handleScroll = () => {
-      if (!heroRef.current || !sliderRef.current) return;
+      if (!heroRef.current) return;
       
       const scrollTop = window.scrollY;
       const heroHeight = window.innerHeight;
       
-      // Parallax effect for slider
-      sliderRef.current.style.transform = `translateY(${scrollTop * 0.2}px)`;
-      
       // Fade out hero section as we scroll down
-      if (scrollTop > heroHeight * 0.3) {
-        const opacity = 1 - ((scrollTop - heroHeight * 0.3) / (heroHeight * 0.5));
+      if (scrollTop > heroHeight * 0.4) {
+        const opacity = 1 - ((scrollTop - heroHeight * 0.4) / (heroHeight * 0.4));
         heroRef.current.style.opacity = Math.max(opacity, 0).toString();
       } else {
         heroRef.current.style.opacity = '1';
@@ -35,7 +31,7 @@ const Hero = () => {
 
   return (
     <div className="hero-section" ref={heroRef}>
-      <div className="hero-slider-container" ref={sliderRef}>
+      <div className="hero-slider-container">
         <HeroSlider autoSlideInterval={6000} />
       </div>
       <HeroProfile />
