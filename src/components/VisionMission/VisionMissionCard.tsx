@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import './VisionMissionCard.css';
 
 export interface VisionMissionCardProps {
@@ -16,6 +16,8 @@ const VisionMissionCard = ({
   color = '#8e7cc3',
   delay = 0,
 }: VisionMissionCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
   return (
     <div 
       className="vision-mission-card" 
@@ -23,8 +25,10 @@ const VisionMissionCard = ({
         '--card-accent-color': color,
         '--animation-delay': `${delay}ms`,
       } as React.CSSProperties}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="vision-mission-card-icon">
+      <div className={`vision-mission-card-icon ${isHovered ? 'hovered' : ''}`}>
         {icon}
       </div>
       <h3 className="vision-mission-card-title">{title}</h3>
