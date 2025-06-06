@@ -1,57 +1,36 @@
-.hero {
-  position: relative;
-  height: calc(100vh - 70px);
-  width: 100%;
-  overflow: hidden;
-  will-change: transform;
-}
-
-.hero-content-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
-
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   max-width: 900px;
   padding: 0 2rem;
-  animation: fadeIn 1.5s ease-in-out;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hero-content.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.hero h1 {
+.hero-content h1 {
   font-size: 4rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: 1px;
+  color: #fff;
 }
 
-.hero p {
+.hero-content p {
   font-size: 1.5rem;
   margin-bottom: 2.5rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  color: #fff;
 }
 
 .cta-button {
@@ -79,23 +58,18 @@
   transform: translateY(-1px);
 }
 
-/* Media queries */
 @media (max-width: 992px) {
-  .hero {
-    height: 80vh;
-  }
-  
-  .hero h1 {
+  .hero-content h1 {
     font-size: 3.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .hero h1 {
+  .hero-content h1 {
     font-size: 2.8rem;
   }
   
-  .hero p {
+  .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
   }
@@ -107,11 +81,7 @@
 }
 
 @media (max-width: 480px) {
-  .hero {
-    height: 70vh;
-  }
-  
-  .hero h1 {
+  .hero-content h1 {
     font-size: 2.2rem;
   }
   

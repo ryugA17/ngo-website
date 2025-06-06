@@ -1,0 +1,142 @@
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Slider controls */
+.slider-controls {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.slider-arrow {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 15px;
+}
+
+.slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.slider-arrow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.slider-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  margin: 0 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.slider-dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Progress indicator */
+.slider-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: var(--primary-color);
+  transition: width 0.1s linear;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+    margin: 0 10px;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+  }
+
+  .slider-controls {
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-arrow {
+    width: 32px;
+    height: 32px;
+    margin: 0 8px;
+  }
+
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+  }
+} 
