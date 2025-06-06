@@ -1,6 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
+import VisionMissionSection from './components/VisionMission/VisionMissionSection';
 import './App.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         </header>
         <main>
           <Hero />
+          <VisionMissionSection />
           {/* Other sections will be added here */}
         </main>
       </div>

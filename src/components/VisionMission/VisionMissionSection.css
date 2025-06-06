@@ -1,0 +1,74 @@
+.vision-mission-section {
+  position: relative;
+  padding: 6rem 0;
+  background-image: url('../../assets/banner-2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.vision-mission-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vision-mission-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.vision-mission-section .container {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.vision-mission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .vision-mission-section {
+    padding: 5rem 0;
+  }
+  
+  .vision-mission-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .vision-mission-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .vision-mission-section {
+    padding: 4rem 0;
+    background-attachment: scroll;
+  }
+  
+  .vision-mission-section .container {
+    padding: 0 1.5rem;
+  }
+  
+  .vision-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+} 
