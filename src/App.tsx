@@ -5,6 +5,7 @@ import VisionMissionSection from './components/VisionMission/VisionMissionSectio
 import ProjectSlider from './components/Projects/ProjectSlider';
 import WorkSection from './components/Work/WorkSection';
 import PartnersSection from './components/Partners/PartnersSection';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           </div>
           {/* Other sections will be added here */}
         </main>
+        <Footer />
       </div>
     </Router>
   );
