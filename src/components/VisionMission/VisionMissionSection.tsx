@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import VisionMissionCard from './VisionMissionCard';
 import { VisionIcon, MissionIcon, ObjectivesIcon } from './VisionMissionIcons';
 import './VisionMissionSection.css';
