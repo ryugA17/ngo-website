@@ -33,18 +33,22 @@ const partnerGroups = [
 
 const PartnersSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const marqueesRef = useRef<HTMLDivElement>(null);
 
   // Animation on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
       },
       {
-        threshold: 0.1,
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
       }
     );
 
@@ -59,10 +63,29 @@ const PartnersSection = () => {
     };
   }, []);
 
+  // Adjust marquee speed based on screen width
+  useEffect(() => {
+    const adjustMarqueeSpeed = () => {
+      const marquees = document.querySelectorAll('.partners-marquee-inner');
+      const speed = window.innerWidth < 768 ? '20s' : '30s';
+      
+      marquees.forEach((marquee) => {
+        (marquee as HTMLElement).style.animationDuration = speed;
+      });
+    };
+
+    adjustMarqueeSpeed();
+    window.addEventListener('resize', adjustMarqueeSpeed);
+
+    return () => {
+      window.removeEventListener('resize', adjustMarqueeSpeed);
+    };
+  }, []);
+
   return (
-    <div className="partners-section" ref={sectionRef}>
+    <div className="partners-section" ref={sectionRef} id="partners">
       <div className="container">
-        <div className="partners-section-header">
+        <div className="partners-section-header" ref={headerRef}>
           <h2 className="partners-section-title">Our Partners</h2>
           <div className="partners-section-underline"></div>
           <p className="partners-section-subtitle">
@@ -72,7 +95,7 @@ const PartnersSection = () => {
       </div>
 
       {/* Marquee rows */}
-      <div className="partners-marquee-container">
+      <div className="partners-marquee-container" ref={marqueesRef}>
         {partnerGroups.map((group, groupIndex) => (
           <div 
             key={`group-${groupIndex}`} 

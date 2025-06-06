@@ -3,23 +3,42 @@ import './HeroSlider.css';
 import banner1 from '../../assets/banner-1.jpg';
 import banner2 from '../../assets/banner-2.jpg';
 
-interface SlideProps {
+interface SlideContent {
   image: string;
+  title: string;
+  subtitle: string;
+}
+
+interface SlideProps {
+  content: SlideContent;
   active: boolean;
   index: number;
 }
 
-const Slide: React.FC<SlideProps> = ({ image, active, index }) => {
+const Slide: React.FC<SlideProps> = ({ content, active, index }) => {
   return (
     <div 
       className={`hero-slide ${active ? 'active' : ''}`} 
       style={{ 
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${image})`,
+        backgroundImage: `url(${content.image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center'
       }}
       aria-hidden={!active}
       role="img"
       aria-label={`Banner slide ${index + 1}`}
     >
+      <div className="slide-overlay"></div>
+      {active && (
+        <div className="slide-content">
+          <h1 className="slide-title">{content.title}</h1>
+          <p className="slide-subtitle">{content.subtitle}</p>
+          <div className="slide-cta">
+            <button className="slide-btn primary">Get Involved</button>
+            <button className="slide-btn secondary">Learn More</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -29,10 +48,23 @@ interface HeroSliderProps {
 }
 
 const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => {
-  const slides = [banner1, banner2];
+  const slides: SlideContent[] = [
+    {
+      image: banner1,
+      title: "Empowering Communities",
+      subtitle: "Creating sustainable change through education, resources, and support"
+    },
+    {
+      image: banner2,
+      title: "Building a Better Future",
+      subtitle: "Join us in our mission to transform lives and communities"
+    }
+  ];
+  
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const autoSlideTimer = useRef<number | null>(null);
   const progressInterval = useRef<number | null>(null);
 
@@ -50,13 +82,15 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
 
   // Set up auto-slide and progress
   const startAutoSlide = useCallback(() => {
+    if (isPaused) return;
+    
     clearTimers();
     
     // Reset progress
     setProgress(0);
     
     // Set up progress interval
-    const intervalTime = 100; // Update every 100ms
+    const intervalTime = 50; // Update every 50ms for smoother progress
     const steps = autoSlideInterval / intervalTime;
     const increment = 100 / steps;
     
@@ -73,7 +107,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
     autoSlideTimer.current = window.setTimeout(() => {
       goToNextSlide();
     }, autoSlideInterval);
-  }, [autoSlideInterval]);
+  }, [autoSlideInterval, isPaused]);
 
   // Go to next slide
   const goToNextSlide = useCallback(() => {
@@ -82,7 +116,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
       setCurrentSlide(prev => (prev + 1) % slides.length);
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 700); // Match this with CSS transition time
+      }, 1000); // Match this with CSS transition time
       startAutoSlide();
     }
   }, [isTransitioning, slides.length, startAutoSlide]);
@@ -94,7 +128,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
       setCurrentSlide(prev => (prev === 0 ? slides.length - 1 : prev - 1));
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 700); // Match this with CSS transition time
+      }, 1000); // Match this with CSS transition time
       startAutoSlide();
     }
   }, [isTransitioning, slides.length, startAutoSlide]);
@@ -106,10 +140,21 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
       setCurrentSlide(index);
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 700); // Match this with CSS transition time
+      }, 1000); // Match this with CSS transition time
       startAutoSlide();
     }
   }, [isTransitioning, currentSlide, startAutoSlide]);
+
+  // Handle mouse enter/leave for pausing
+  const handleMouseEnter = useCallback(() => {
+    setIsPaused(true);
+    clearTimers();
+  }, [clearTimers]);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsPaused(false);
+    startAutoSlide();
+  }, [startAutoSlide]);
 
   // Initialize auto-slide
   useEffect(() => {
@@ -118,12 +163,16 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
   }, [startAutoSlide, clearTimers]);
 
   return (
-    <div className="hero-slider">
+    <div 
+      className="hero-slider"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="hero-slides-container">
         {slides.map((slide, index) => (
           <Slide 
             key={index} 
-            image={slide} 
+            content={slide} 
             active={index === currentSlide} 
             index={index}
           />

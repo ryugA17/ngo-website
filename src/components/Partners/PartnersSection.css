@@ -1,43 +1,67 @@
 .partners-section {
-  padding: 5rem 0;
-  background-color: #0f0f0f;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  padding: 6rem 0;
+  background-color: var(--bg-dark);
+  position: relative;
   overflow: hidden;
 }
 
-.partners-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+.partners-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(var(--primary-color-rgb), 0.08) 0%, rgba(var(--primary-color-rgb), 0) 70%),
+    radial-gradient(circle at 90% 80%, rgba(var(--secondary-color-rgb), 0.08) 0%, rgba(var(--secondary-color-rgb), 0) 70%);
+  z-index: 1;
+}
+
+.partners-section .container {
+  position: relative;
+  z-index: 2;
 }
 
 .partners-section-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.partners-section.visible .partners-section-header {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .partners-section-title {
   font-size: 2.5rem;
-  color: #8e7cc3;
+  background: linear-gradient(90deg, var(--primary-light), var(--white), var(--secondary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
-  font-weight: 600;
+  font-weight: 700;
+  display: inline-block;
 }
 
 .partners-section-underline {
   height: 3px;
   width: 80px;
-  background: linear-gradient(90deg, #4a90e2, #8e7cc3);
-  margin: 0 auto;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  margin: 0.5rem auto 1.5rem;
   border-radius: 3px;
 }
 
 .partners-section-subtitle {
-  color: #e0e0e0;
+  color: var(--gray);
   font-size: 1.1rem;
   max-width: 700px;
-  margin: 1.5rem auto 0;
-  line-height: 1.6;
+  margin: 0 auto;
+  line-height: 1.7;
 }
 
 /* Marquee container and animation */
@@ -45,8 +69,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  margin-top: 2rem;
+  gap: 3.5rem;
+  margin-top: 3rem;
+  opacity: 0;
+  transition: opacity 1s ease 0.3s;
+}
+
+.partners-section.visible .partners-marquee-container {
+  opacity: 1;
 }
 
 .partners-marquee {
@@ -54,6 +84,28 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  padding: 1rem 0;
+}
+
+.partners-marquee::before,
+.partners-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.partners-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-dark) 0%, rgba(18, 18, 18, 0) 100%);
+}
+
+.partners-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-dark) 0%, rgba(18, 18, 18, 0) 100%);
 }
 
 .partners-marquee-inner {
@@ -70,23 +122,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2rem;
-  height: 100px;
+  padding: 0 2.5rem;
+  height: 120px;
 }
 
 .partner-logo {
-  max-width: 150px;
-  max-height: 80px;
+  max-width: 160px;
+  max-height: 90px;
   object-fit: contain;
   filter: grayscale(100%) brightness(1.5);
   opacity: 0.7;
-  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  transition: all var(--transition-medium);
+  transform: translateY(0);
 }
 
 .partner-logo-container:hover .partner-logo {
   filter: grayscale(0%) brightness(1);
   opacity: 1;
-  transform: scale(1.05);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Pause animation on hover */
@@ -107,16 +161,40 @@
 /* Media queries */
 @media (max-width: 1200px) {
   .partners-section {
-    padding: 4rem 0;
+    padding: 5rem 0;
   }
   
   .partners-section-title {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
   }
   
   .partner-logo-container {
-    padding: 0 1.5rem;
-    height: 90px;
+    padding: 0 2rem;
+    height: 110px;
+  }
+  
+  .partner-logo {
+    max-width: 150px;
+    max-height: 80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .partners-section {
+    padding: 4.5rem 0;
+  }
+  
+  .partners-section-subtitle {
+    font-size: 1rem;
+  }
+  
+  .partners-marquee-container {
+    gap: 3rem;
+  }
+  
+  .partner-logo-container {
+    padding: 0 1.8rem;
+    height: 100px;
   }
   
   .partner-logo {
@@ -125,13 +203,55 @@
   }
 }
 
-@media (max-width: 992px) {
-  .partners-section-subtitle {
-    font-size: 1rem;
+@media (max-width: 768px) {
+  .partners-section {
+    padding: 4rem 0;
+  }
+  
+  .partners-section-title {
+    font-size: 2rem;
+  }
+  
+  .partners-section-header {
+    margin-bottom: 3rem;
   }
   
   .partners-marquee-container {
     gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  
+  .partner-logo-container {
+    padding: 0 1.5rem;
+    height: 90px;
+  }
+  
+  .partner-logo {
+    max-width: 120px;
+    max-height: 60px;
+  }
+  
+  .partners-marquee::before,
+  .partners-marquee::after {
+    width: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .partners-section {
+    padding: 3.5rem 0;
+  }
+  
+  .partners-section-title {
+    font-size: 1.8rem;
+  }
+  
+  .partners-section-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .partners-marquee-container {
+    gap: 2rem;
   }
   
   .partner-logo-container {
@@ -140,63 +260,12 @@
   }
   
   .partner-logo {
-    max-width: 120px;
-    max-height: 60px;
-  }
-}
-
-@media (max-width: 768px) {
-  .partners-section {
-    padding: 3rem 0;
-  }
-  
-  .partners-section-title {
-    font-size: 2rem;
-  }
-  
-  .partners-section-header {
-    margin-bottom: 2rem;
-  }
-  
-  .partners-marquee-container {
-    gap: 2rem;
-  }
-  
-  .partner-logo-container {
-    padding: 0 1rem;
-    height: 70px;
-  }
-  
-  .partner-logo {
     max-width: 100px;
     max-height: 50px;
   }
-}
-
-@media (max-width: 576px) {
-  .partners-section {
-    padding: 2.5rem 0;
-  }
   
-  .partners-section-title {
-    font-size: 1.8rem;
-  }
-  
-  .partners-section-subtitle {
-    font-size: 0.9rem;
-  }
-  
-  .partners-marquee-container {
-    gap: 1.5rem;
-  }
-  
-  .partner-logo-container {
-    padding: 0 0.8rem;
-    height: 60px;
-  }
-  
-  .partner-logo {
-    max-width: 80px;
-    max-height: 40px;
+  .partners-marquee::before,
+  .partners-marquee::after {
+    width: 70px;
   }
 } 

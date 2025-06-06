@@ -1,4 +1,4 @@
-import { FaFacebookF, FaTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
@@ -6,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer-content container">
         <div className="footer-section about">
           <h3 className="footer-title">ABOUT US</h3>
@@ -16,6 +16,23 @@ const Footer = () => {
             health, education, economic empowerment and political participation and thus allowing them to lead a 
             life of dignity.
           </p>
+          <div className="social-links">
+            <a href="https://facebook.com" aria-label="Visit our Facebook page" className="social-link">
+              <FaFacebookF />
+            </a>
+            <a href="https://twitter.com" aria-label="Visit our Twitter page" className="social-link">
+              <FaTwitter />
+            </a>
+            <a href="https://instagram.com" aria-label="Visit our Instagram page" className="social-link">
+              <FaInstagram />
+            </a>
+            <a href="https://linkedin.com" aria-label="Visit our LinkedIn page" className="social-link">
+              <FaLinkedinIn />
+            </a>
+            <a href="https://youtube.com" aria-label="Visit our YouTube channel" className="social-link">
+              <FaYoutube />
+            </a>
+          </div>
         </div>
 
         <div className="footer-section links">
@@ -81,13 +98,12 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="container footer-bottom-content">
           <p className="copyright">© Copyright {currentYear}. All Rights Reserved by <strong>SIIRD</strong></p>
-          <div className="social-links">
-            <a href="https://facebook.com" aria-label="Visit our Facebook page" className="social-link">
-              <FaFacebookF />
-            </a>
-            <a href="https://twitter.com" aria-label="Visit our Twitter page" className="social-link">
-              <FaTwitter />
-            </a>
+          <div className="footer-links">
+            <Link to="/privacy-policy">Privacy Policy</Link>
+            <span className="footer-divider">|</span>
+            <Link to="/terms">Terms of Use</Link>
+            <span className="footer-divider">|</span>
+            <Link to="/sitemap">Sitemap</Link>
           </div>
         </div>
       </div>
