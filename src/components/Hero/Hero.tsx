@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import HeroSlider from './HeroSlider';
-import HeroStats from './HeroStats';
 import './Hero.css';
 
 const Hero = () => {
@@ -31,9 +30,6 @@ const Hero = () => {
     <section className="hero" ref={heroRef}>
       <div className="hero-slider-container">
         <HeroSlider autoSlideInterval={6000} />
-      </div>
-      <div className="hero-additional-content">
-        <HeroStats />
       </div>
     </section>
   );
