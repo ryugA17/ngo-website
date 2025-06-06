@@ -36,18 +36,18 @@ const HeroProfile = () => {
         <div className="profile-content">
           <div className="profile-text">
             <div className="profile-content-wrapper">
-              <div className="profile-label">PROFILE</div>
-              <h2>
-                Indian Institute For Rural Development (IIRD) Was Established In 1994 As A Non-Profit Voluntary Organization
-              </h2>
+              <div className="profile-label">ABOUT US</div>
+              <h2>Indian Institute For Rural Development (IIRD)</h2>
               
               <p className="description">
-                The Indian Institute for Rural Development (IIRD) was founded with the aim to provide the most underprivileged individuals with equal conditions, enhancing their capacity to control their own lives, health, education, economic empowerment and political participation and thus allowing them to lead a life of dignity.
+                Founded in 1994 as a non-profit voluntary organization, IIRD aims to provide underprivileged individuals with equal conditions, enhancing their capacity to control their own lives through health, education, economic empowerment and political participation.
               </p>
               
               <p className="description">
-                IIRD undertakes integrated programmes for the upliftment and economic development of rural stakeholders in the villages of Rajasthan and providing backward and forward linkages to the rural economy. Through its non-rigid, locality specific, felt need-based, beneficiary oriented and committed nature of service, it has established multitude of roles which effects rural development.
+                We undertake integrated programmes for the upliftment and economic development of rural stakeholders in Rajasthan, providing backward and forward linkages to strengthen the rural economy through need-based, locality-specific initiatives.
               </p>
+              
+              <a href="/about" className="learn-more-btn">Learn More</a>
             </div>
           </div>
           
@@ -56,8 +56,6 @@ const HeroProfile = () => {
               src={aboutUsImage} 
               alt="Rural development initiatives" 
               loading="lazy"
-              width="500"
-              height="350"
             />
           </div>
         </div>
