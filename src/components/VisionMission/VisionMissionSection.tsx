@@ -30,8 +30,20 @@ const VisionMissionSection = () => {
     };
   }, []);
 
+  // Handle smooth scrolling for anchor links
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80, // Account for navbar
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <section className="vision-mission-section" ref={sectionRef}>
+    <section className="vision-mission-section" ref={sectionRef} id="vision-mission">
       <div className="vision-mission-overlay"></div>
       <div className="container">
         <div className="vision-mission-grid">
@@ -41,6 +53,8 @@ const VisionMissionSection = () => {
             icon={<VisionIcon />}
             color="#4a90e2"
             delay={0}
+            linkHref="#vision"
+            onLinkClick={(e) => handleSmoothScroll(e, 'vision')}
           />
           
           <VisionMissionCard
@@ -49,6 +63,8 @@ const VisionMissionSection = () => {
             icon={<MissionIcon />}
             color="#8e7cc3"
             delay={200}
+            linkHref="#mission"
+            onLinkClick={(e) => handleSmoothScroll(e, 'mission')}
           />
           
           <VisionMissionCard
@@ -57,6 +73,8 @@ const VisionMissionSection = () => {
             icon={<ObjectivesIcon />}
             color="#50C878"
             delay={400}
+            linkHref="#objectives"
+            onLinkClick={(e) => handleSmoothScroll(e, 'objectives')}
           />
         </div>
       </div>
