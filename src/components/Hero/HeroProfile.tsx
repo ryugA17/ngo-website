@@ -35,22 +35,20 @@ const HeroProfile = () => {
       <div className="container">
         <div className="profile-content">
           <div className="profile-text">
-            <h2>Empowering Rural Communities</h2>
-            <p className="subtitle">Working together for sustainable development</p>
-            
-            <p className="description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-            
-            <p className="description">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-              culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            
-            <button className="learn-more-btn">Learn More</button>
+            <div className="profile-content-wrapper">
+              <div className="profile-label">PROFILE</div>
+              <h2>
+                Indian Institute For Rural Development (IIRD) Was Established In 1994 As A Non-Profit Voluntary Organization
+              </h2>
+              
+              <p className="description">
+                The Indian Institute for Rural Development (IIRD) was founded with the aim to provide the most underprivileged individuals with equal conditions, enhancing their capacity to control their own lives, health, education, economic empowerment and political participation and thus allowing them to lead a life of dignity.
+              </p>
+              
+              <p className="description">
+                IIRD undertakes integrated programmes for the upliftment and economic development of rural stakeholders in the villages of Rajasthan and providing backward and forward linkages to the rural economy. Through its non-rigid, locality specific, felt need-based, beneficiary oriented and committed nature of service, it has established multitude of roles which effects rural development.
+              </p>
+            </div>
           </div>
           
           <div className="profile-image">
