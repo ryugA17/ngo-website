@@ -19,5 +19,17 @@ export { default as ProjectSlider } from './Projects/ProjectSlider';
 export { default as ProjectCard } from './Projects/ProjectCard';
 export { projectsData } from './Projects/ProjectsData';
 
+// Work Components
+export { default as WorkSection } from './Work/WorkSection';
+
+// Partners Components
+export { default as PartnersSection } from './Partners/PartnersSection';
+
+// Footer Components
+export { default as Footer } from './Footer/Footer';
+
 // Dropdown Component
-export { default as Dropdown } from './Dropdown/Dropdown'; 
+export { default as Dropdown } from './Dropdown/Dropdown';
+
+// Profile Components
+export { default as ProfileSection } from './Profile/ProfileSection'; 
