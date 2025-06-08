@@ -17,4 +17,7 @@ export { VisionIcon, MissionIcon, ObjectivesIcon } from './VisionMission/VisionM
 // Project Components
 export { default as ProjectSlider } from './Projects/ProjectSlider';
 export { default as ProjectCard } from './Projects/ProjectCard';
-export { projectsData } from './Projects/ProjectsData'; 
+export { projectsData } from './Projects/ProjectsData';
+
+// Dropdown Component
+export { default as Dropdown } from './Dropdown/Dropdown'; 

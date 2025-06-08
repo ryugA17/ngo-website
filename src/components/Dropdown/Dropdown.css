@@ -1,0 +1,101 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-label {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem 0.5rem 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color var(--transition-fast);
+  border-radius: var(--border-radius-sm);
+  position: relative;
+}
+
+.dropdown-label:focus,
+.dropdown-label:hover {
+  color: var(--accent-light);
+  outline: none;
+  background: rgba(255,255,255,0.04);
+}
+
+.dropdown-arrow {
+  font-size: 0.8em;
+  margin-left: 0.3em;
+  transition: transform var(--transition-fast);
+  display: inline-block;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(-180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 220px;
+  background: var(--bg-light);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-md);
+  padding: 0.5rem 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInDropdown 0.18s ease;
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+  color: var(--white);
+  padding: 0.7rem 1.2rem;
+  font-size: 0.97rem;
+  text-align: left;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  border-radius: 0;
+  display: block;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  outline: none;
+}
+
+/* Responsive: make dropdown full width on mobile nav */
+@media (max-width: 1100px) {
+  .dropdown-menu {
+    position: static;
+    min-width: 100%;
+    box-shadow: none;
+    background: var(--bg-dark);
+    border-radius: 0;
+    padding: 0.2rem 0;
+  }
+  .dropdown-label {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+    font-size: 1.2rem;
+  }
+  .dropdown-item {
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+  }
+} 
