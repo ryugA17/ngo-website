@@ -42,7 +42,7 @@ const Dropdown: React.FC<DropdownProps> = ({ label, options }) => {
   };
 
   return (
-    <div className="dropdown" ref={dropdownRef}>
+    <div className={`dropdown ${open ? 'active' : ''}`} ref={dropdownRef}>
       <button
         className="dropdown-label"
         aria-haspopup="true"
@@ -53,25 +53,23 @@ const Dropdown: React.FC<DropdownProps> = ({ label, options }) => {
         type="button"
       >
         {label}
-        <span className={`dropdown-arrow${open ? ' open' : ''}`}>▼</span>
       </button>
-      {open && (
-        <ul className="dropdown-menu" role="menu">
-          {options.map((option, idx) => (
-            <li key={option.path} role="none">
-              <Link
-                to={option.path}
-                className="dropdown-item"
-                role="menuitem"
-                tabIndex={0}
-                onClick={() => setOpen(false)}
-              >
-                {option.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      
+      <ul className="dropdown-menu" role="menu">
+        {options.map((option) => (
+          <li key={option.path} role="none">
+            <Link
+              to={option.path}
+              className="dropdown-item"
+              role="menuitem"
+              tabIndex={0}
+              onClick={() => setOpen(false)}
+            >
+              {option.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

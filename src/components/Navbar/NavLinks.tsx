@@ -51,7 +51,7 @@ const NavLinks = () => {
   return (
     <ul className="nav-links">
       {links.map((link, index) => (
-        <li key={index}>
+        <li key={index} className={link.dropdown ? 'has-dropdown' : ''}>
           {link.dropdown ? (
             <Dropdown label={link.name} options={link.dropdown} />
           ) : (

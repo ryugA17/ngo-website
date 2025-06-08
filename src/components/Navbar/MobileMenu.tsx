@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import NavLinks from './NavLinks';
 
 interface MobileMenuProps {
@@ -6,19 +6,6 @@ interface MobileMenuProps {
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen = false }) => {
-  // Prevent scrolling when mobile menu is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
-  
   return (
     <div className="mobile-menu" aria-expanded={isOpen}>
       <NavLinks />
