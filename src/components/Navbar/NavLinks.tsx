@@ -1,71 +1,84 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useMemo } from 'react';
-import { Dropdown } from '../index';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Dropdown } from '..';
+import './NavLinks.css';
 
-const aboutUsOptions = [
-  { label: 'PROFILE', path: '/about-us/profile' },
-  { label: "SECRETARY'S MESSAGE", path: '/about-us/secretary-message' },
-  { label: 'IIRD APPROACH TO DEVELOPMENT', path: '/about-us/approach' },
-  { label: 'PARTNERS IN GROWTH', path: '/about-us/partners' },
-  { label: 'GEOGRAPHICAL OUTREACH', path: '/about-us/geographical-outreach' },
-  { label: 'ONGOING ACTIVITIES', path: '/about-us/ongoing-activities' },
-  { label: 'LEGAL DOCUMENT', path: '/about-us/legal-document' },
-];
+interface NavLinksProps {
+  isMobile?: boolean;
+  closeMenu?: () => void;
+}
 
-const ruralDevelopmentOptions = [
-  { label: 'ECONOMIC DEVELOPMENT AND POVERTY ALLEVIATION', path: '/rural-development/economic-poverty' },
-  { label: 'EDUCATION AND CHILD DEVELOPMENT', path: '/rural-development/education-child' },
-  { label: 'HEALTH AND SANITATION', path: '/rural-development/health-sanitation' },
-  { label: 'NATURAL RESOURCES MANAGEMENT', path: '/rural-development/natural-resources' },
-  { label: 'WOMEN EMPOWERMENT', path: '/rural-development/women-empowerment' },
-  { label: 'RESEARCH, EVALUATION AND MONITORING AGENCY', path: '/rural-development/research-evaluation' },
-];
+const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false, closeMenu }) => {
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-const humanResourcesOptions = [
-  { label: 'CORPORATE GOVERNANCE', path: '/human-resources/corporate-governance' },
-  { label: 'MANAGEMENT TEAM', path: '/human-resources/management-team' },
-  { label: 'BOARD MEMBER', path: '/human-resources/board-member' },
-];
-
-const NavLinks = () => {
-  const location = useLocation();
-  
-  const links = useMemo(() => [
-    { name: 'HOME', path: '/' },
-    { name: 'ABOUT US', dropdown: aboutUsOptions },
-    { name: 'RURAL DEVELOPMENT', dropdown: ruralDevelopmentOptions },
-    { name: 'NEWS AND EVENTS', path: '/news-events' },
-    { name: 'HUMAN RESOURCES', dropdown: humanResourcesOptions },
-    { name: 'CAREERS', path: '/careers' },
-    { name: 'GALLERY', path: '/gallery' },
-    { name: 'CONTACT US', path: '/contact-us' }
-  ], []);
-  
-  const isActive = (path: string): boolean => {
-    if (path === '/' && location.pathname === '/') {
-      return true;
-    }
-    return path !== '/' && location.pathname.startsWith(path);
+  const handleDropdownToggle = (dropdownName: string) => {
+    setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
   };
 
+  const handleLinkClick = () => {
+    if (isMobile && closeMenu) {
+      closeMenu();
+    }
+    setActiveDropdown(null);
+  };
+
+  const aboutUsDropdownItems = [
+    { label: 'Profile', path: '/about-us/profile' },
+    { label: 'Secretary\'s Message', path: '/about-us/secretary-message' },
+    { label: 'IIRD Approach', path: '/about-us/approach' },
+    { label: 'Partners In Growth', path: '/about-us/partners' },
+    { label: 'Geographical Outreach', path: '/about-us/geographical-outreach' },
+    { label: 'Ongoing Activities', path: '/about-us/ongoing-activities' },
+    { label: 'Legal Documents', path: '/about-us/legal-documents' }
+  ];
+
   return (
-    <ul className="nav-links">
-      {links.map((link, index) => (
-        <li key={index} className={link.dropdown ? 'has-dropdown' : ''}>
-          {link.dropdown ? (
-            <Dropdown label={link.name} options={link.dropdown} />
-          ) : (
-            <Link 
-              to={link.path!} 
-              className={isActive(link.path!) ? 'active' : ''}
-              aria-current={isActive(link.path!) ? 'page' : undefined}
-            >
-              {link.name}
-            </Link>
-          )}
+    <nav className={`nav-links ${isMobile ? 'mobile' : ''}`}>
+      <ul className="nav-list">
+        <li className="nav-item">
+          <Link to="/" className="nav-link" onClick={handleLinkClick}>HOME</Link>
         </li>
-      ))}
-    </ul>
+        <li className="nav-item dropdown">
+          <button 
+            className={`nav-link dropdown-toggle ${activeDropdown === 'about' ? 'active' : ''}`} 
+            onClick={() => handleDropdownToggle('about')}
+          >
+            ABOUT US
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={`dropdown-arrow ${activeDropdown === 'about' ? 'active' : ''}`}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <Dropdown 
+            isOpen={activeDropdown === 'about'} 
+            items={aboutUsDropdownItems} 
+            onClick={handleLinkClick} 
+          />
+        </li>
+        <li className="nav-item">
+          <Link to="/projects" className="nav-link" onClick={handleLinkClick}>PROJECTS</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/gallery" className="nav-link" onClick={handleLinkClick}>GALLERY</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/news" className="nav-link" onClick={handleLinkClick}>NEWS</Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/contact-us" className="nav-link" onClick={handleLinkClick}>CONTACT US</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

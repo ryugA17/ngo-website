@@ -32,4 +32,10 @@ export { default as Footer } from './Footer/Footer';
 export { default as Dropdown } from './Dropdown/Dropdown';
 
 // Profile Components
-export { default as ProfileSection } from './Profile/ProfileSection'; 
+export { default as ProfileSection } from './Profile/ProfileSection';
+export { default as SecretaryMessageSection } from './SecretaryMessage/SecretaryMessageSection';
+export { default as ApproachSection } from './Approach/ApproachSection';
+export { default as PartnersInGrowthSection } from './Partners/PartnersInGrowthSection';
+export { default as GeographicalOutreachSection } from './GeographicalOutreach/GeographicalOutreachSection';
+export { default as OngoingActivitiesSection } from './OngoingActivities/OngoingActivitiesSection';
+export { default as LegalDocumentSection } from './LegalDocument/LegalDocumentSection'; 

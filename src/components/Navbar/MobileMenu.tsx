@@ -1,14 +1,35 @@
-import React from 'react';
-import NavLinks from './NavLinks';
+import { useState } from 'react';
+import { NavLinks } from '..';
+import './MobileMenu.css';
 
-interface MobileMenuProps {
-  isOpen?: boolean;
-}
+const MobileMenu: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen = false }) => {
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    // Prevent body scroll when menu is open
+    document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
-    <div className="mobile-menu" aria-expanded={isOpen}>
-      <NavLinks />
+    <div className="mobile-menu-container">
+      <button 
+        className={`hamburger-button ${isOpen ? 'active' : ''}`} 
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+        aria-expanded={isOpen}
+      >
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
+
+      {isOpen && <NavLinks isMobile={true} closeMenu={closeMenu} />}
     </div>
   );
 };

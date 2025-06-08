@@ -1,0 +1,36 @@
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-image {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: all var(--transition-medium);
+}
+
+.scrolled .logo-image {
+  height: 45px;
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    height: 45px;
+  }
+  
+  .scrolled .logo-image {
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-image {
+    height: 40px;
+  }
+  
+  .scrolled .logo-image {
+    height: 35px;
+  }
+} 

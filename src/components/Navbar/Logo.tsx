@@ -1,20 +1,12 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/iird-logo.png';
+import './Logo.css';
 
-const Logo = () => {
+const Logo: React.FC = () => {
   return (
-    <div className="logo-container">
-      <Link to="/" aria-label="IIRD Home">
-        <img 
-          src={logo} 
-          alt="IIRD Logo" 
-          className="logo" 
-          loading="eager" 
-          width="120" 
-          height="50" 
-        />
-      </Link>
-    </div>
+    <Link to="/" className="logo-container">
+      <img src={logo} alt="IIRD Logo" className="logo-image" />
+    </Link>
   );
 };
 

@@ -1,13 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
-import VisionMissionSection from './components/VisionMission/VisionMissionSection';
-import ProjectSlider from './components/Projects/ProjectSlider';
-import WorkSection from './components/Work/WorkSection';
-import PartnersSection from './components/Partners/PartnersSection';
-import ProfileSection from './components/Profile/ProfileSection';
-import Footer from './components/Footer/Footer';
+import { 
+  Navbar,
+  Hero,
+  VisionMissionSection,
+  ProjectSlider,
+  WorkSection,
+  PartnersSection,
+  Footer,
+  ProfileSection,
+  SecretaryMessageSection,
+  ApproachSection,
+  PartnersInGrowthSection,
+  GeographicalOutreachSection,
+  OngoingActivitiesSection,
+  LegalDocumentSection
+} from './components';
 import './App.css';
 
 function App() {
@@ -62,36 +70,26 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
-        <header>
-          <Navbar />
-        </header>
-        <main>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <div className="section-wrapper">
-                  <section className="sticky-section">
-                    <Hero />
-                  </section>
-                  <section className="next-section">
-                    <VisionMissionSection />
-                  </section>
-                </div>
-                <div className="section-container" id="work">
-                  <WorkSection />
-                </div>
-                <div className="section-container" id="projects">
-                  <ProjectSlider />
-                </div>
-                <div className="section-container" id="partners">
-                  <PartnersSection />
-                </div>
-              </>
-            } />
-            <Route path="/about-us/profile" element={<ProfileSection />} />
-          </Routes>
-        </main>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <VisionMissionSection />
+              <ProjectSlider />
+              <WorkSection />
+              <PartnersSection />
+            </>
+          } />
+          <Route path="/about-us/profile" element={<ProfileSection />} />
+          <Route path="/about-us/secretary-message" element={<SecretaryMessageSection />} />
+          <Route path="/about-us/approach" element={<ApproachSection />} />
+          <Route path="/about-us/partners" element={<PartnersInGrowthSection />} />
+          <Route path="/about-us/geographical-outreach" element={<GeographicalOutreachSection />} />
+          <Route path="/about-us/ongoing-activities" element={<OngoingActivitiesSection />} />
+          <Route path="/about-us/legal-documents" element={<LegalDocumentSection />} />
+        </Routes>
         <Footer />
       </div>
     </Router>

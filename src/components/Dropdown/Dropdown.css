@@ -1,1 +1,79 @@
-/* Dropdown styles are now in the Navbar.css file */ 
+/* Dropdown styles are now in the Navbar.css file */
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-sm);
+  min-width: 220px;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-medium);
+  z-index: 100;
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-item {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: var(--light-gray);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+  border-left-color: var(--accent-light);
+}
+
+@media (max-width: 992px) {
+  .dropdown-menu {
+    position: static;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    min-width: 100%;
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-medium);
+  }
+  
+  .dropdown-menu.active {
+    max-height: 500px;
+    padding: 0.5rem 0;
+  }
+  
+  .dropdown-link {
+    padding-left: 2rem;
+    font-size: 1rem;
+  }
+} 
