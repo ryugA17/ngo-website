@@ -46,4 +46,7 @@ export { default as LegalDocumentSection } from './LegalDocument/LegalDocumentSe
 export { BoardMemberSection, ManagementTeamSection, TeamProfilesSection } from './HumanResources';
 
 // Contact Components
-export { default as ContactSection } from './Contact/ContactSection'; 
+export { default as ContactSection } from './Contact/ContactSection';
+
+// Gallery Components
+export { default as GallerySection } from './Gallery/GallerySection'; 

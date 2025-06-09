@@ -131,7 +131,7 @@ const PartnersInGrowthSection: React.FC = () => {
         <div className="partnership-cta animate-fade-in delay-400">
           <h3>Become Our Partner</h3>
           <p>Join us in our mission to empower rural communities and create sustainable development solutions.</p>
-          <a href="/contact-us" className="btn btn-primary">Contact Us</a>
+          <a href="/contact" className="btn btn-primary">Contact Us</a>
         </div>
       </div>
     </section>

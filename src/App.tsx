@@ -21,6 +21,7 @@ import {
 } from './components';
 import TestDropdown from './components/TestDropdown';
 import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
 import './App.css';
 
 function App() {
@@ -104,6 +105,9 @@ function App() {
           
           {/* Contact Route */}
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Gallery Route */}
+          <Route path="/gallery" element={<Gallery />} />
           
           {/* Test Route */}
           <Route path="/test-dropdown" element={<TestDropdown />} />

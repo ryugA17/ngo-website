@@ -124,7 +124,7 @@ const FixedNavbar: React.FC = () => {
                 <Link to="/news" className="mobile-nav-link" onClick={toggleMobileMenu}>NEWS</Link>
               </li>
               <li className="mobile-nav-item">
-                <Link to="/contact-us" className="mobile-nav-link" onClick={toggleMobileMenu}>CONTACT US</Link>
+                <Link to="/contact" className="mobile-nav-link" onClick={toggleMobileMenu}>CONTACT US</Link>
               </li>
             </ul>
           </nav>
