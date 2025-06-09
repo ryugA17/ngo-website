@@ -1,0 +1,119 @@
+.fixed-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.dropdown-button:hover {
+  color: #f18f01;
+}
+
+.dropdown-button.active {
+  color: #f18f01;
+}
+
+.dropdown-button.highlight {
+  color: #f18f01;
+}
+
+.dropdown-arrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.active {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1e1e1e;
+  min-width: 220px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  z-index: 1000;
+  margin-top: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: dropdown-fade 0.3s ease;
+}
+
+.dropdown-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item:hover {
+  background-color: #6d2163;
+  color: white;
+}
+
+.dropdown-content ul li:last-child .dropdown-item {
+  border-bottom: none;
+}
+
+@keyframes dropdown-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 992px) {
+  .fixed-dropdown {
+    width: 100%;
+  }
+  
+  .dropdown-button {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .dropdown-content {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 0;
+    border-radius: 0;
+    animation: none;
+  }
+  
+  .dropdown-item {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+} 

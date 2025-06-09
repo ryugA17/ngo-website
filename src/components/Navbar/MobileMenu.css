@@ -38,4 +38,15 @@
   .mobile-menu-container {
     display: block;
   }
+  
+  /* Mobile dropdown styles */
+  .nav-links.mobile .dropdown-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .nav-links.mobile .nav-item.dropdown.active .dropdown-menu {
+    max-height: 500px;
+  }
 } 

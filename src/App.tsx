@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { 
-  Navbar,
+  FixedNavbar,
   Hero,
   VisionMissionSection,
   ProjectSlider,
@@ -14,8 +14,12 @@ import {
   PartnersInGrowthSection,
   GeographicalOutreachSection,
   OngoingActivitiesSection,
-  LegalDocumentSection
+  LegalDocumentSection,
+  BoardMemberSection,
+  ManagementTeamSection,
+  TeamProfilesSection
 } from './components';
+import TestDropdown from './components/TestDropdown';
 import './App.css';
 
 function App() {
@@ -71,7 +75,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <FixedNavbar />
         <Routes>
           <Route path="/" element={
             <>
@@ -82,6 +86,8 @@ function App() {
               <PartnersSection />
             </>
           } />
+          
+          {/* About Us Routes */}
           <Route path="/about-us/profile" element={<ProfileSection />} />
           <Route path="/about-us/secretary-message" element={<SecretaryMessageSection />} />
           <Route path="/about-us/approach" element={<ApproachSection />} />
@@ -89,6 +95,14 @@ function App() {
           <Route path="/about-us/geographical-outreach" element={<GeographicalOutreachSection />} />
           <Route path="/about-us/ongoing-activities" element={<OngoingActivitiesSection />} />
           <Route path="/about-us/legal-documents" element={<LegalDocumentSection />} />
+          
+          {/* Human Resources Routes */}
+          <Route path="/human-resources/board-members" element={<BoardMemberSection />} />
+          <Route path="/human-resources/management-team" element={<ManagementTeamSection />} />
+          <Route path="/human-resources/team-profiles" element={<TeamProfilesSection />} />
+          
+          {/* Test Route */}
+          <Route path="/test-dropdown" element={<TestDropdown />} />
         </Routes>
         <Footer />
       </div>

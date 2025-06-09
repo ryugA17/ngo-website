@@ -31,6 +31,7 @@
   color: var(--accent-light);
 }
 
+/* Dropdown Toggle Button */
 .dropdown-toggle {
   background: none;
   border: none;
@@ -54,12 +55,70 @@
   color: var(--accent-light);
 }
 
+/* Highlight Human Resources in the image */
+.dropdown-toggle.highlight {
+  color: #f18f01;
+}
+
+/* Dropdown Arrow */
 .dropdown-arrow {
   transition: transform var(--transition-medium);
+  margin-left: 5px;
 }
 
 .dropdown-arrow.active {
   transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 220px;
+  background-color: #1e1e1e;
+  border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: dropdown-fade 0.3s ease;
+  overflow: hidden;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-item:hover {
+  background-color: #6d2163;
+  color: white;
+}
+
+.dropdown-menu li:last-child .dropdown-item {
+  border-bottom: none;
+}
+
+@keyframes dropdown-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Mobile Styles */
@@ -99,6 +158,12 @@
   box-shadow: none;
   border: none;
   background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+}
+
+.nav-links.mobile .dropdown-item {
+  padding: 1rem 2rem;
+  font-size: 1rem;
 }
 
 @media (max-width: 992px) {

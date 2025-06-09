@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLinks } from '..';
 import './MobileMenu.css';
 
@@ -15,6 +15,32 @@ const MobileMenu: React.FC = () => {
     setIsOpen(false);
     document.body.style.overflow = 'auto';
   };
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (isOpen) {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener('popstate', handleRouteChange);
+    return () => {
+      window.removeEventListener('popstate', handleRouteChange);
+    };
+  }, [isOpen]);
+
+  // Close mobile menu on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 992 && isOpen) {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen]);
 
   return (
     <div className="mobile-menu-container">
