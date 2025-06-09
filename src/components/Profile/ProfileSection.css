@@ -1,12 +1,10 @@
 .profile-section {
   position: relative;
   width: 100%;
-  padding: 8rem 0 6rem;
+  padding: 0 0 6rem;
   background-color: var(--bg-dark);
   color: var(--white);
   overflow: hidden;
-  opacity: 0.95;
-  transition: opacity var(--transition-medium);
 }
 
 .profile-section.in-view {
@@ -32,16 +30,38 @@
 }
 
 .profile-header {
-  margin-bottom: 3.5rem;
-  text-align: center;
+  background-color: #f8f8f8;
+  padding: 30px 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #212121;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+}
+
+.section-underline {
+  position: absolute;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #6d2163, #4a90e2);
+  border-radius: 2px;
+  bottom: -15px;
+  left: 0;
 }
 
 .profile-subtitle {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
-  color: var(--accent-light);
-  margin-top: 1rem;
-  text-align: center;
+  color: #f18f01;
+  margin: 0;
 }
 
 .profile-content {
@@ -50,6 +70,7 @@
   gap: 3rem;
   margin-bottom: 4rem;
   align-items: center;
+  padding: 0 50px;
 }
 
 .profile-image-container {
@@ -159,6 +180,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   margin-bottom: 4rem;
+  padding: 0 50px;
 }
 
 .mission-vision-item {
@@ -211,6 +233,7 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: var(--shadow-md);
   opacity: 0;
+  margin: 0 50px;
 }
 
 .profile-section.in-view .profile-objectives {
@@ -248,7 +271,7 @@
   position: relative;
   padding-left: 2rem;
   font-size: 1.05rem;
-  line-height: 1.7;
+  line-height: 1.6;
   color: var(--light-gray);
 }
 
@@ -256,24 +279,58 @@
   content: '';
   position: absolute;
   left: 0;
-  top: 0.6rem;
+  top: 8px;
   width: 10px;
   height: 10px;
-  background-color: var(--accent-light);
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
   border-radius: 50%;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 1200px) {
   .profile-section {
-    padding: 7rem 0 5rem;
+    padding: 0 0 4rem;
   }
   
   .profile-content {
-    gap: 2.5rem;
+    gap: 2rem;
   }
   
   .profile-stats {
-    gap: 1rem;
+    flex-wrap: wrap;
   }
 }
 
@@ -284,12 +341,12 @@
   }
   
   .profile-image-container {
-    max-width: 600px;
     margin: 0 auto;
+    max-width: 80%;
   }
   
   .profile-mission-vision {
-    gap: 2rem;
+    grid-template-columns: 1fr;
   }
   
   .objectives-list {
@@ -299,31 +356,42 @@
 
 @media (max-width: 768px) {
   .profile-section {
-    padding: 6rem 0 4rem;
+    padding: 0 0 3rem;
+  }
+  
+  .profile-header {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
   }
   
   .profile-subtitle {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-top: 10px;
   }
   
   .profile-stats {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   
   .stat-item {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
   }
   
-  .profile-mission-vision {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .profile-content,
+  .profile-mission-vision,
+  .profile-objectives {
+    padding: 0 20px;
   }
   
   .mission-vision-item {
-    padding: 2rem;
+    padding: 1.5rem;
   }
   
   .profile-objectives {
@@ -333,7 +401,7 @@
 
 @media (max-width: 576px) {
   .profile-section {
-    padding: 5rem 0 3rem;
+    padding: 0 0 2rem;
   }
   
   .profile-image-overlay span {
@@ -342,7 +410,7 @@
   }
   
   .profile-paragraph {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   
   .mission-vision-title,
@@ -352,6 +420,6 @@
   
   .mission-vision-text,
   .objectives-list li {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 } 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './ManagementTeam.css';
 
 interface ManagementTeamMember {
@@ -9,6 +9,32 @@ interface ManagementTeamMember {
 }
 
 const ManagementTeam: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Add intersection observer for animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Management team data from the images
   const managementTeamMembers: ManagementTeamMember[] = [
     {
@@ -62,20 +88,15 @@ const ManagementTeam: React.FC = () => {
   ];
 
   return (
-    <div className="management-team-section">
-      <div className="page-header">
-        <h1>MANAGEMENT TEAM</h1>
-      </div>
-      <div className="breadcrumb">
-        <a href="/" className="home-link">
-          <i className="fa fa-home"></i> HOME
-        </a>
-        <span className="separator">o</span>
-        <span className="current-page">MANAGEMENT TEAM</span>
-      </div>
-      
-      <div className="container management-team-container">
-        <div className="table-responsive">
+    <section className="management-team-section" ref={sectionRef} id="management-team">
+      <div className="container">
+        <div className="management-header">
+          <h2 className="section-title animate-fade-in">Human Resources</h2>
+          <div className="section-underline"></div>
+          <h3 className="management-subtitle animate-fade-in delay-100">Management Team</h3>
+        </div>
+        
+        <div className="table-responsive animate-fade-in delay-200">
           <table className="management-team-table">
             <thead>
               <tr>
@@ -99,7 +120,7 @@ const ManagementTeam: React.FC = () => {
         </div>
         
         {/* Team Member Cards */}
-        <div className="team-member-cards">
+        <div className="team-member-cards animate-fade-in delay-300">
           <div className="row">
             {/* Parmod Kumar Paliwal */}
             <div className="col-md-4 team-card">
@@ -227,7 +248,7 @@ const ManagementTeam: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

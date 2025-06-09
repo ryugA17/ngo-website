@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './BoardMember.css';
 
 interface BoardMemberData {
@@ -9,6 +9,32 @@ interface BoardMemberData {
 }
 
 const BoardMember: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Add intersection observer for animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Board member data from the images
   const boardMembers: BoardMemberData[] = [
     {
@@ -80,20 +106,15 @@ const BoardMember: React.FC = () => {
   ];
 
   return (
-    <div className="board-member-section">
-      <div className="page-header">
-        <h1>BOARD MEMBER</h1>
-      </div>
-      <div className="breadcrumb">
-        <a href="/" className="home-link">
-          <i className="fa fa-home"></i> HOME
-        </a>
-        <span className="separator">o</span>
-        <span className="current-page">BOARD MEMBER</span>
-      </div>
-      
-      <div className="container board-member-container">
-        <div className="table-responsive">
+    <section className="board-member-section" ref={sectionRef} id="board-member">
+      <div className="container">
+        <div className="board-header">
+          <h2 className="section-title animate-fade-in">Human Resources</h2>
+          <div className="section-underline"></div>
+          <h3 className="board-subtitle animate-fade-in delay-100">Board Member</h3>
+        </div>
+        
+        <div className="table-responsive animate-fade-in delay-200">
           <table className="board-member-table">
             <thead>
               <tr>
@@ -116,7 +137,7 @@ const BoardMember: React.FC = () => {
           </table>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

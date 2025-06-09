@@ -32,13 +32,15 @@ const ProfileSection: React.FC = () => {
 
   return (
     <section className="profile-section" ref={sectionRef} id="profile">
-      <div className="container">
-        <div className="profile-header">
-          <h2 className="section-title animate-fade-in">About Us</h2>
+      <div className="profile-header">
+        <h2 className="section-title">
+          About Us
           <div className="section-underline"></div>
-          <h3 className="profile-subtitle animate-fade-in delay-100">Profile</h3>
-        </div>
+        </h2>
+        <h3 className="profile-subtitle">Profile</h3>
+      </div>
 
+      <div className="container">
         <div className="profile-content" ref={contentRef}>
           <div className="profile-image-container animate-slide-right">
             <img 

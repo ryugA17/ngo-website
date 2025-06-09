@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import './TeamProfiles.css';
 
 interface TeamMemberProfile {
@@ -14,6 +14,32 @@ interface TeamMemberProfile {
 }
 
 const TeamProfiles: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Add intersection observer for animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Team member profiles data
   const teamProfiles: TeamMemberProfile[] = [
     {
@@ -92,20 +118,15 @@ const TeamProfiles: React.FC = () => {
   ];
 
   return (
-    <div className="team-profiles-section">
-      <div className="page-header">
-        <h1>TEAM PROFILES</h1>
-      </div>
-      <div className="breadcrumb">
-        <a href="/" className="home-link">
-          <i className="fa fa-home"></i> HOME
-        </a>
-        <span className="separator">o</span>
-        <span className="current-page">TEAM PROFILES</span>
-      </div>
-      
-      <div className="container team-profiles-container">
-        <div className="team-profiles-grid">
+    <section className="team-profiles-section" ref={sectionRef} id="team-profiles">
+      <div className="container">
+        <div className="team-header">
+          <h2 className="section-title animate-fade-in">Human Resources</h2>
+          <div className="section-underline"></div>
+          <h3 className="team-subtitle animate-fade-in delay-100">Team Profiles</h3>
+        </div>
+        
+        <div className="team-profiles-grid animate-fade-in delay-200">
           {teamProfiles.map((profile) => (
             <div className="profile-card" key={profile.id}>
               <div className="profile-header">
@@ -127,7 +148,7 @@ const TeamProfiles: React.FC = () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
