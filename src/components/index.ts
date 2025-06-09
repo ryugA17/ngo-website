@@ -43,4 +43,7 @@ export { default as OngoingActivitiesSection } from './OngoingActivities/Ongoing
 export { default as LegalDocumentSection } from './LegalDocument/LegalDocumentSection';
 
 // Human Resources Components
-export { BoardMemberSection, ManagementTeamSection, TeamProfilesSection } from './HumanResources'; 
+export { BoardMemberSection, ManagementTeamSection, TeamProfilesSection } from './HumanResources';
+
+// Contact Components
+export { default as ContactSection } from './Contact/ContactSection'; 

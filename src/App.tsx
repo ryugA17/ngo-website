@@ -20,6 +20,7 @@ import {
   TeamProfilesSection
 } from './components';
 import TestDropdown from './components/TestDropdown';
+import Contact from './pages/Contact';
 import './App.css';
 
 function App() {
@@ -100,6 +101,9 @@ function App() {
           <Route path="/human-resources/board-members" element={<BoardMemberSection />} />
           <Route path="/human-resources/management-team" element={<ManagementTeamSection />} />
           <Route path="/human-resources/team-profiles" element={<TeamProfilesSection />} />
+          
+          {/* Contact Route */}
+          <Route path="/contact" element={<Contact />} />
           
           {/* Test Route */}
           <Route path="/test-dropdown" element={<TestDropdown />} />

@@ -85,7 +85,7 @@ const FixedNavbar: React.FC = () => {
               <Link to="/news" className="nav-link">NEWS</Link>
             </li>
             <li className="nav-item">
-              <Link to="/contact-us" className="nav-link">CONTACT US</Link>
+              <Link to="/contact" className="nav-link">CONTACT US</Link>
             </li>
           </ul>
         </nav>

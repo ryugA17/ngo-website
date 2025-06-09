@@ -211,8 +211,8 @@ const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false, closeMenu }) => {
         </li>
         <li className="nav-item">
           <Link 
-            to="/contact-us" 
-            className={`nav-link ${location.pathname === '/contact-us' ? 'active' : ''}`} 
+            to="/contact" 
+            className={`nav-link ${location.pathname === '/contact' ? 'active' : ''}`} 
             onClick={handleLinkClick}
           >
             CONTACT US
