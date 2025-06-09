@@ -27,7 +27,8 @@
   white-space: nowrap;
 }
 
-.nav-link:hover {
+.nav-link:hover, 
+.nav-link.active {
   color: var(--accent-light);
 }
 
@@ -52,11 +53,6 @@
 }
 
 .dropdown-toggle.active {
-  color: var(--accent-light);
-}
-
-/* Highlight Human Resources in the image */
-.dropdown-toggle.highlight {
   color: #f18f01;
 }
 
@@ -75,7 +71,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 1500;
   min-width: 220px;
   background-color: #1e1e1e;
   border-radius: 4px;
@@ -83,6 +79,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   animation: dropdown-fade 0.3s ease;
   overflow: hidden;
+  opacity: 1;
+  visibility: visible;
 }
 
 .dropdown-menu ul {

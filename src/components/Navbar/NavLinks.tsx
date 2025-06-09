@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './NavLinks.css';
 
 interface NavLinksProps {
@@ -16,6 +16,12 @@ const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false, closeMenu }) => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const aboutRef = useRef<HTMLLIElement>(null);
   const hrRef = useRef<HTMLLIElement>(null);
+  const location = useLocation();
+
+  // Check if current path is a Human Resources page
+  const isHumanResourcesPage = location.pathname.includes('/human-resources');
+  // Check if current path is an About Us page
+  const isAboutUsPage = location.pathname.includes('/about-us');
 
   const handleDropdownToggle = (dropdownName: string) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
@@ -80,14 +86,20 @@ const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false, closeMenu }) => {
     <nav className={`nav-links ${isMobile ? 'mobile' : ''}`}>
       <ul className="nav-list">
         <li className="nav-item">
-          <Link to="/" className="nav-link" onClick={handleLinkClick}>HOME</Link>
+          <Link 
+            to="/" 
+            className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} 
+            onClick={handleLinkClick}
+          >
+            HOME
+          </Link>
         </li>
         <li 
           ref={aboutRef}
-          className={`nav-item dropdown ${activeDropdown === 'about' ? 'active' : ''}`}
+          className={`nav-item dropdown ${activeDropdown === 'about' || isAboutUsPage ? 'active' : ''}`}
         >
           <button 
-            className={`nav-link dropdown-toggle ${activeDropdown === 'about' ? 'active' : ''}`} 
+            className={`nav-link dropdown-toggle ${activeDropdown === 'about' || isAboutUsPage ? 'active' : ''}`} 
             onClick={() => handleDropdownToggle('about')}
             aria-haspopup="true"
             aria-expanded={activeDropdown === 'about'}
@@ -128,10 +140,10 @@ const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false, closeMenu }) => {
         </li>
         <li 
           ref={hrRef}
-          className={`nav-item dropdown ${activeDropdown === 'hr' ? 'active' : ''}`}
+          className={`nav-item dropdown ${activeDropdown === 'hr' || isHumanResourcesPage ? 'active' : ''}`}
         >
           <button 
-            className={`nav-link dropdown-toggle highlight ${activeDropdown === 'hr' ? 'active' : ''}`} 
+            className={`nav-link dropdown-toggle ${activeDropdown === 'hr' || isHumanResourcesPage ? 'active' : ''}`} 
             onClick={() => handleDropdownToggle('hr')}
             aria-haspopup="true"
             aria-expanded={activeDropdown === 'hr'}
@@ -171,16 +183,40 @@ const NavLinks: React.FC<NavLinksProps> = ({ isMobile = false, closeMenu }) => {
           )}
         </li>
         <li className="nav-item">
-          <Link to="/projects" className="nav-link" onClick={handleLinkClick}>PROJECTS</Link>
+          <Link 
+            to="/projects" 
+            className={`nav-link ${location.pathname === '/projects' ? 'active' : ''}`} 
+            onClick={handleLinkClick}
+          >
+            PROJECTS
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to="/gallery" className="nav-link" onClick={handleLinkClick}>GALLERY</Link>
+          <Link 
+            to="/gallery" 
+            className={`nav-link ${location.pathname === '/gallery' ? 'active' : ''}`} 
+            onClick={handleLinkClick}
+          >
+            GALLERY
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to="/news" className="nav-link" onClick={handleLinkClick}>NEWS</Link>
+          <Link 
+            to="/news" 
+            className={`nav-link ${location.pathname === '/news' ? 'active' : ''}`} 
+            onClick={handleLinkClick}
+          >
+            NEWS
+          </Link>
         </li>
         <li className="nav-item">
-          <Link to="/contact-us" className="nav-link" onClick={handleLinkClick}>CONTACT US</Link>
+          <Link 
+            to="/contact-us" 
+            className={`nav-link ${location.pathname === '/contact-us' ? 'active' : ''}`} 
+            onClick={handleLinkClick}
+          >
+            CONTACT US
+          </Link>
         </li>
       </ul>
     </nav>

@@ -40,13 +40,42 @@
   }
   
   /* Mobile dropdown styles */
-  .nav-links.mobile .dropdown-menu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+  .nav-links.mobile {
+    display: flex;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    padding: 1rem;
+    overflow-y: auto;
   }
   
-  .nav-links.mobile .nav-item.dropdown.active .dropdown-menu {
-    max-height: 500px;
+  .nav-links.mobile .nav-list {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nav-links.mobile .nav-item {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-links.mobile .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    z-index: auto;
+  }
+  
+  .nav-links.mobile .dropdown-item {
+    padding: 1rem 2rem;
   }
 } 

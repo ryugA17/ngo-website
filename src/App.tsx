@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { 
-  FixedNavbar,
+  Navbar,
   Hero,
   VisionMissionSection,
   ProjectSlider,
@@ -75,7 +75,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <FixedNavbar />
+        <Navbar />
         <Routes>
           <Route path="/" element={
             <>
