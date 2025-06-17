@@ -22,7 +22,8 @@ const Slide: React.FC<SlideProps> = ({ content, active, index }) => {
       style={{ 
         backgroundImage: `url(${content.image})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center center'
+        backgroundPosition: 'center center',
+        opacity: active ? 1 : 0 // Make sure active slide is visible
       }}
       aria-hidden={!active}
       role="img"
@@ -167,6 +168,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ autoSlideInterval = 5000 }) => 
       className="hero-slider"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={{ opacity: 1, visibility: 'visible' }}
     >
       <div className="hero-slides-container">
         {slides.map((slide, index) => (

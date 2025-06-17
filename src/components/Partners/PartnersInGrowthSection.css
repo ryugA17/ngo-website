@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   padding: 8rem 0 6rem;
-  background-color: var(--bg-dark);
-  color: var(--white);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   overflow: hidden;
   opacity: 0.95;
   transition: opacity var(--transition-medium);
@@ -39,7 +39,7 @@
 .partners-subtitle {
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--accent-light);
+  color: var(--primary-color);
   margin-top: 1rem;
   text-align: center;
 }
@@ -58,7 +58,7 @@
 .partners-intro p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: var(--light-gray);
+  color: var(--text-light);
   margin-bottom: 1rem;
 }
 
@@ -70,10 +70,10 @@
 }
 
 .partner-card {
-  background: linear-gradient(145deg, rgba(18, 18, 18, 0.8), rgba(30, 30, 30, 0.8));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(245, 245, 245, 0.8));
   border-radius: var(--border-radius-md);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   display: flex;
@@ -105,30 +105,28 @@
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  filter: brightness(0.9) contrast(1.1);
   transition: transform var(--transition-medium), filter var(--transition-medium);
 }
 
 .partner-card:hover .partner-logo {
   transform: scale(1.05);
-  filter: brightness(1) contrast(1.2);
 }
 
 .partner-link {
   margin-top: 1rem;
-  color: var(--accent-light);
+  color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--accent-light);
+  border: 1px solid var(--primary-color);
   border-radius: var(--border-radius-sm);
   transition: all var(--transition-medium);
 }
 
 .partner-link:hover {
-  background-color: var(--accent-light);
-  color: var(--bg-dark);
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .partnership-benefits {
@@ -146,6 +144,7 @@
   margin-bottom: 2rem;
   position: relative;
   padding-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .benefits-title::after {
@@ -166,10 +165,10 @@
 }
 
 .benefit-item {
-  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.1), rgba(var(--secondary-color-rgb), 0.1));
+  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.05), rgba(var(--secondary-color-rgb), 0.05));
   border-radius: var(--border-radius-md);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-medium);
 }
@@ -182,21 +181,21 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--accent-light);
+  color: var(--primary-color);
 }
 
 .benefit-item p {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
 }
 
 .partnership-cta {
   text-align: center;
   padding: 3rem;
-  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.15), rgba(var(--secondary-color-rgb), 0.15));
+  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.05), rgba(var(--secondary-color-rgb), 0.05));
   border-radius: var(--border-radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   opacity: 0;
 }
@@ -209,13 +208,13 @@
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .partnership-cta p {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;

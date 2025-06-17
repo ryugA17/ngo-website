@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   padding: 8rem 0 6rem;
-  background-color: var(--bg-dark);
-  color: var(--white);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   overflow: hidden;
   opacity: 0.95;
   transition: opacity var(--transition-medium);
@@ -39,7 +39,7 @@
 .legal-subtitle {
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--accent-light);
+  color: var(--primary-color);
   margin-top: 1rem;
   text-align: center;
 }
@@ -58,7 +58,7 @@
 .legal-intro p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: var(--light-gray);
+  color: var(--text-light);
   margin-bottom: 1rem;
 }
 
@@ -70,10 +70,10 @@
 }
 
 .document-card {
-  background: linear-gradient(145deg, rgba(18, 18, 18, 0.8), rgba(30, 30, 30, 0.8));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.9));
   border-radius: var(--border-radius-md);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   display: flex;
@@ -97,9 +97,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.15), rgba(var(--secondary-color-rgb), 0.15));
+  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.1), rgba(var(--secondary-color-rgb), 0.1));
   border-radius: var(--border-radius-sm);
-  color: var(--accent-light);
+  color: var(--primary-color);
 }
 
 .document-icon svg {
@@ -115,13 +115,13 @@
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .document-description {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
   margin-bottom: 1.5rem;
 }
 
@@ -129,19 +129,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--accent-light);
+  color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
   padding: 0.5rem 1rem;
-  border: 1px solid var(--accent-light);
+  border: 1px solid var(--primary-color);
   border-radius: var(--border-radius-sm);
   transition: all var(--transition-medium);
 }
 
 .document-download:hover {
-  background-color: var(--accent-light);
-  color: var(--bg-dark);
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
 .document-download svg {
@@ -151,10 +151,10 @@
 
 .legal-disclosure {
   padding: 3rem;
-  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.1), rgba(var(--secondary-color-rgb), 0.1));
+  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.05), rgba(var(--secondary-color-rgb), 0.05));
   border-radius: var(--border-radius-md);
   margin-bottom: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   opacity: 0;
 }
@@ -169,6 +169,7 @@
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .disclosure-title::after {
@@ -185,7 +186,7 @@
 .legal-disclosure p {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: var(--light-gray);
+  color: var(--text-light);
   margin-bottom: 1.5rem;
 }
 
@@ -194,13 +195,13 @@
 }
 
 .email-link {
-  color: var(--accent-light);
+  color: var(--primary-color);
   text-decoration: none;
   transition: color var(--transition-medium);
 }
 
 .email-link:hover {
-  color: var(--primary-light);
+  color: var(--secondary-color);
   text-decoration: underline;
 }
 
@@ -218,6 +219,7 @@
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .compliance-title::after {
@@ -227,7 +229,7 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   border-radius: 3px;
 }
 
@@ -237,6 +239,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
+  align-items: start;
 }
 
 .compliance-list li {
@@ -244,7 +247,10 @@
   padding-left: 2rem;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 80px;
 }
 
 .compliance-list li::before {
@@ -254,13 +260,20 @@
   top: 0.6rem;
   width: 10px;
   height: 10px;
-  background-color: var(--accent-light);
+  background-color: var(--primary-color);
   border-radius: 50%;
 }
 
 .compliance-list li strong {
-  color: var(--white);
+  color: var(--text-dark);
   font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.compliance-list li span {
+  display: block;
+  color: var(--text-light);
 }
 
 @media (max-width: 1200px) {
@@ -313,6 +326,11 @@
   
   .legal-disclosure {
     padding: 2rem;
+  }
+  
+  .compliance-list li {
+    min-height: auto;
+    margin-bottom: 1.5rem;
   }
 }
 

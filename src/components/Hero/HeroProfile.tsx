@@ -5,33 +5,15 @@ import aboutUsImage from '../../assets/aboutus-pic1.jpg';
 const HeroProfile = () => {
   const profileRef = useRef<HTMLDivElement>(null);
 
-  // Add scroll reveal animation
+  // Make profile visible immediately
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
     if (profileRef.current) {
-      observer.observe(profileRef.current);
+      profileRef.current.classList.add('visible');
     }
-
-    return () => {
-      if (profileRef.current) {
-        observer.unobserve(profileRef.current);
-      }
-    };
   }, []);
 
   return (
-    <section className="hero-profile" ref={profileRef}>
+    <section className="hero-profile visible" ref={profileRef}>
       <div className="container">
         <div className="profile-content">
           <div className="profile-text">

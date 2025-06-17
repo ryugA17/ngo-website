@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   padding: 8rem 0 6rem;
-  background-color: var(--bg-dark);
-  color: var(--white);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   overflow: hidden;
   opacity: 0.95;
   transition: opacity var(--transition-medium);
@@ -39,7 +39,7 @@
 .approach-subtitle {
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--accent-light);
+  color: var(--primary-color);
   margin-top: 1rem;
   text-align: center;
 }
@@ -58,13 +58,13 @@
 .approach-intro p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--light-gray);
+  color: var(--text-light);
   margin-bottom: 1rem;
 }
 
 .approach-intro p:last-child {
   font-weight: 500;
-  color: var(--white);
+  color: var(--text-dark);
 }
 
 .approach-principles {
@@ -75,10 +75,10 @@
 }
 
 .principle-card {
-  background: linear-gradient(145deg, rgba(18, 18, 18, 0.8), rgba(30, 30, 30, 0.8));
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.9));
   border-radius: var(--border-radius-md);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   opacity: 0;
@@ -97,7 +97,7 @@
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
-  color: var(--accent-light);
+  color: var(--primary-color);
   position: relative;
   padding-bottom: 0.8rem;
 }
@@ -116,7 +116,7 @@
 .principle-description {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
 }
 
 .approach-methods {
@@ -134,6 +134,7 @@
   margin-bottom: 2rem;
   position: relative;
   padding-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .methods-title::after {
@@ -154,10 +155,10 @@
 }
 
 .method-item {
-  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.1), rgba(var(--secondary-color-rgb), 0.1));
+  background: linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.05), rgba(var(--secondary-color-rgb), 0.05));
   border-radius: var(--border-radius-md);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-medium);
 }
@@ -170,13 +171,13 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--accent-light);
+  color: var(--primary-color);
 }
 
 .method-item p {
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
 }
 
 .approach-capabilities {
@@ -193,6 +194,7 @@
   margin-bottom: 2rem;
   position: relative;
   padding-bottom: 1rem;
+  color: var(--text-dark);
 }
 
 .capabilities-title::after {
@@ -202,7 +204,7 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
   border-radius: 3px;
 }
 
@@ -219,7 +221,7 @@
   padding-left: 2rem;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: var(--light-gray);
+  color: var(--text-light);
 }
 
 .capabilities-list li::before {
@@ -229,12 +231,12 @@
   top: 0.6rem;
   width: 10px;
   height: 10px;
-  background-color: var(--accent-light);
+  background-color: var(--primary-color);
   border-radius: 50%;
 }
 
 .capabilities-list li strong {
-  color: var(--white);
+  color: var(--text-dark);
   font-weight: 600;
 }
 

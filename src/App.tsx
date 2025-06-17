@@ -80,13 +80,24 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={
-            <>
-              <Hero />
+            <main style={{ paddingTop: 0 }}> {/* Remove padding to prevent gap */}
+              <div 
+                className="hero-section-wrapper" 
+                style={{ 
+                  position: 'relative', 
+                  zIndex: 5, 
+                  height: '100vh', 
+                  overflow: 'visible', 
+                  marginTop: 0 
+                }}
+              >
+                <Hero />
+              </div>
               <VisionMissionSection />
               <ProjectSlider />
               <WorkSection />
               <PartnersSection />
-            </>
+            </main>
           } />
           
           {/* About Us Routes */}

@@ -7,38 +7,27 @@ const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Add fade effect for sticky transition
+  // Remove fade effect on scroll and keep hero visible
   useEffect(() => {
-    const handleScroll = () => {
-      if (!heroRef.current) return;
-      
-      const scrollTop = window.scrollY;
-      const heroHeight = window.innerHeight;
-      
-      // Fade out hero section as we scroll down
-      if (scrollTop > heroHeight * 0.4) {
-        const opacity = 1 - ((scrollTop - heroHeight * 0.4) / (heroHeight * 0.4));
-        heroRef.current.style.opacity = Math.max(opacity, 0).toString();
-      } else {
-        heroRef.current.style.opacity = '1';
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    // Set loaded state immediately for animations
+    setIsLoaded(true);
     
-    // Set loaded state after a small delay for animations
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
+    // Ensure hero stays visible regardless of scroll position
+    if (heroRef.current) {
+      heroRef.current.style.opacity = '1';
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timer);
+      // No cleanup needed for scroll events since we're not adding any
     };
   }, []);
 
   return (
-    <div className={`hero-section ${isLoaded ? 'loaded' : ''}`} ref={heroRef}>
+    <div 
+      className={`hero-section ${isLoaded ? 'loaded' : ''}`} 
+      ref={heroRef}
+      style={{ display: 'flex', visibility: 'visible', opacity: 1 }}
+    >
       <div className="hero-slider-container">
         <HeroSlider autoSlideInterval={6000} />
       </div>

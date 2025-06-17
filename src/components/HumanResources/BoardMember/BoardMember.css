@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   padding: 8rem 0 6rem;
-  background-color: var(--bg-dark);
-  color: var(--white);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   overflow: hidden;
   opacity: 0.95;
   transition: opacity var(--transition-medium);
@@ -39,7 +39,7 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-dark);
   position: relative;
   display: inline-block;
   margin-bottom: 0.5rem;
@@ -56,7 +56,7 @@
 .board-subtitle {
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--accent-light);
+  color: var(--primary-color);
   margin-top: 1rem;
   text-align: center;
 }
@@ -67,6 +67,8 @@
   border-radius: var(--border-radius-md);
   box-shadow: var(--shadow-md);
   opacity: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
 .board-member-section.in-view .table-responsive {
@@ -81,18 +83,20 @@
 }
 
 .board-member-table th {
-  background-color: rgba(var(--primary-color-rgb), 0.3);
-  color: var(--white);
+  background-color: rgba(var(--primary-color-rgb), 0.25);
+  color: var(--text-dark);
   padding: 1.2rem 1rem;
   text-align: left;
-  font-weight: 600;
-  border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.5);
+  font-weight: 700;
+  border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.4);
+  font-size: 1.05rem;
 }
 
 .board-member-table td {
   padding: 1rem;
-  color: var(--light-gray);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-dark);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-weight: 500;
 }
 
 .board-member-table tr:last-child td {
@@ -100,11 +104,11 @@
 }
 
 .board-member-table tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .board-member-table tr:hover {
-  background-color: rgba(var(--primary-color-rgb), 0.1);
+  background-color: rgba(var(--primary-color-rgb), 0.08);
 }
 
 /* Animation classes */

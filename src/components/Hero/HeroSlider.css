@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .hero-slides-container {
@@ -13,6 +14,7 @@
   width: 100%;
   height: 100%;
   overflow: visible;
+  z-index: 2;
 }
 
 .hero-slide {
@@ -24,13 +26,15 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  /* Initial opacity set to 0 - the active class will make it visible */
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1);
   transition: opacity 1s ease-in-out, transform 1.5s ease-in-out;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: visible;
 }
 
 .hero-slide::before {
@@ -55,9 +59,10 @@
 }
 
 .hero-slide.active {
-  opacity: 1;
-  transform: scale(1);
+  opacity: 1 !important;
+  transform: scale(1) !important;
   z-index: 2;
+  visibility: visible !important;
 }
 
 /* Slide content */

@@ -130,16 +130,20 @@ const LegalDocumentSection: React.FC = () => {
           <h3 className="compliance-title">Our Compliance Standards</h3>
           <ul className="compliance-list">
             <li>
-              <strong>Financial Transparency:</strong> We maintain complete transparency in our financial operations and regularly publish our financial statements.
+              <strong>Financial Transparency:</strong> 
+              <span>We maintain complete transparency in our financial operations and regularly publish our financial statements.</span>
             </li>
             <li>
-              <strong>Regulatory Compliance:</strong> We strictly adhere to all regulations governing non-profit organizations in India.
+              <strong>Regulatory Compliance:</strong> 
+              <span>We strictly adhere to all regulations governing non-profit organizations in India.</span>
             </li>
             <li>
-              <strong>Ethical Standards:</strong> We follow the highest ethical standards in all our operations and partnerships.
+              <strong>Ethical Standards:</strong> 
+              <span>We follow the highest ethical standards in all our operations and partnerships.</span>
             </li>
             <li>
-              <strong>Accountability:</strong> We are accountable to our donors, partners, beneficiaries, and the government for all our actions and use of resources.
+              <strong>Accountability:</strong> 
+              <span>We are accountable to our donors, partners, beneficiaries, and the government for all our actions and use of resources.</span>
             </li>
           </ul>
         </div>
